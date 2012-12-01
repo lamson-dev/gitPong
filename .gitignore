@@ -1,18 +1,7 @@
 
 # Custom #
-bin/gitPong.apk
-bin/AndroidManifest.xml
 gen/
 bin/
-
-classes.dex
-resources.ap_
-gitPong.apk
-BuildConfig.java
-R.java
-
-gen/com/canefaitrien/gitpong/R.java
-
 
 # Compiled source #
 ###################
