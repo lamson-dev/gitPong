@@ -53,7 +53,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.canefaitrien.gitpong.PongActivity"
+            android:name=".DemoPongActivity"
             android:exported="false"
             android:label="@string/title_activity_pong" >
             <intent-filter>
@@ -63,7 +63,7 @@
             </intent-filter>
         </activity>
          <activity
-            android:name=".CombatActivity"
+            android:name=".FrameAnimationExample"
             android:exported="false"
             android:label="@string/title_activity_pong" >
             <intent-filter>
