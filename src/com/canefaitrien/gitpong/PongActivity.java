@@ -3,7 +3,6 @@
  */
 package com.canefaitrien.gitpong;
 
-import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -21,6 +20,7 @@ public class PongActivity extends RootActivity implements IPongView,
 	private static final String TAG = "Pong";
 	private boolean continueMusic;
 
+	private FrameLayout layout;
 	private BallView ballView;
 	private PaddleView objectsView;
 	private GestureDetector gestures;
@@ -46,20 +46,17 @@ public class PongActivity extends RootActivity implements IPongView,
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		final FrameLayout main = new FrameLayout(this);
-		main.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.MATCH_PARENT));
-		main.setBackgroundResource(R.drawable.background_b);
+		setContentView(R.layout.activity_pong);
+		layout = (FrameLayout) findViewById(R.id.frame_pong);
 
 		objectsView = new PaddleView(this, mPresenter);
 		gestures = new GestureDetector(this);
 		paddleMovementMaxY = (int) (mPresenter.getPaddle().getY() - 100);
-		main.addView(objectsView);
+		layout.addView(objectsView);
 
 		ballView = new BallView(this, mPresenter);
-		main.addView(ballView);
-		setContentView(main);
+		layout.addView(ballView);
+
 	}
 
 	@Override

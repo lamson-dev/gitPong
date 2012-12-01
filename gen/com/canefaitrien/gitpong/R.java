@@ -25,30 +25,32 @@ public final class R {
         public static final int background_b=0x7f020001;
         public static final int ball_a=0x7f020002;
         public static final int custom_btn_main=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int load_button=0x7f020005;
-        public static final int menubutton_nuetral=0x7f020006;
-        public static final int menubutton_pressed=0x7f020007;
-        public static final int paddle=0x7f020008;
-        public static final int pound_anim1=0x7f020009;
-        public static final int pound_anim2=0x7f02000a;
-        public static final int pound_anim3=0x7f02000b;
-        public static final int pound_anim4=0x7f02000c;
-        public static final int pound_anim5=0x7f02000d;
-        public static final int pound_skill=0x7f02000e;
-        public static final int projectpong_logo=0x7f02000f;
-        public static final int space_trader_logo=0x7f020010;
-        public static final int start_button=0x7f020011;
+        public static final int custom_btn_skill1=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int load_button=0x7f020006;
+        public static final int menubutton_nuetral=0x7f020007;
+        public static final int menubutton_pressed=0x7f020008;
+        public static final int paddle=0x7f020009;
+        public static final int pound_anim1=0x7f02000a;
+        public static final int pound_anim2=0x7f02000b;
+        public static final int pound_anim3=0x7f02000c;
+        public static final int pound_anim4=0x7f02000d;
+        public static final int pound_anim5=0x7f02000e;
+        public static final int pound_skill=0x7f02000f;
+        public static final int projectpong_logo=0x7f020010;
+        public static final int space_trader_logo=0x7f020011;
+        public static final int start_button=0x7f020012;
     }
     public static final class id {
         public static final int btnStart=0x7f090001;
         public static final int btn_debugmode=0x7f090005;
         public static final int btn_loadgame=0x7f090004;
         public static final int btn_newgame=0x7f090003;
+        public static final int frame_pong=0x7f090006;
         public static final int img=0x7f090000;
         public static final int img_logo=0x7f090002;
-        public static final int menu_settings=0x7f090007;
-        public static final int textView1=0x7f090006;
+        public static final int menu_settings=0x7f090008;
+        public static final int textView1=0x7f090007;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
