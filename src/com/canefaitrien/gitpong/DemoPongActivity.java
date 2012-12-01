@@ -88,7 +88,7 @@ public class DemoPongActivity extends RootActivity implements IPongView,
 	@Override
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
 			float distanceY) {
-		Log.d(TAG, "scroll" + (int) e2.getRawX() + " " + (int) e2.getRawY());
+		// Log.d(TAG, "scroll" + (int) e2.getRawX() + " " + (int) e2.getRawY());
 		if (e2.getRawY() > paddleMovementMaxY) {
 			objectsView.getPad1().setTargetx((int) e2.getRawX());
 		} else {

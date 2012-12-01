@@ -30,10 +30,13 @@ public class PongPresenter {
 	public void moveBall(int canvasWidth, int canvasHeight) {
 		if (mBall.hitEdge(canvasWidth)) {
 			mBall.setVx(mBall.getVx() * (-1));
-		} else if (mBall.hitPaddle(mPaddle.getX(), mPaddle.getY(),
-				mPaddle.getWidth())) {
+		}
+
+		if (mBall.hitPaddle(mPaddle.getX(), mPaddle.getY(), mPaddle.getWidth())) {
 			mBall.setVy(mBall.getVy() * (-1));
-		} else if (mBall.hitEnd(canvasHeight)) {
+		}
+
+		if (mBall.hitEnd(canvasHeight)) {
 			mBall.setVy(mBall.getVy() * (-1));
 		}
 		mBall.updateX();

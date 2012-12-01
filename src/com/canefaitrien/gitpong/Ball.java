@@ -1,6 +1,10 @@
 package com.canefaitrien.gitpong;
 
+import android.util.Log;
+
 public class Ball implements IBallModel {
+	private final String TAG = "Ball";
+
 	private float x;
 	private float y;
 	private float vx;
@@ -15,23 +19,32 @@ public class Ball implements IBallModel {
 		y = 50;
 	}
 
-	public boolean hitPaddle(float padX, float padY, float length) {
-
-		if (y + height >= padY)
-			if (x >= padX && x <= padX + length)
+	public boolean hitPaddle(float padX, float padY, float padWidth) {
+		if ((y + height) >= padY) {
+			Log.d(TAG, "y is greater than padY");
+			// if (x >= (padX + padWidth / 2) && x <= (padX + padWidth / 2)) {
+			if (x >= 0 && x <= padX) {
+				Log.d(TAG, "ball hit paddle padX=" + padX + " padY=" + padY
+						+ " " + padWidth);
 				return true;
+			}
+		}
 		return false;
 	}
 
 	public boolean hitEdge(int canvasWidth) {
+
 		if (x <= 0 || x >= canvasWidth - width) {
+			Log.d(TAG, "ball hit edge");
 			return true;
 		}
 		return false;
 	}
 
 	public boolean hitEnd(int canvasHeight) {
+
 		if (y <= 0 || y >= canvasHeight - height) {
+			Log.d(TAG, "ball hit end");
 			return true;
 		}
 		return false;
