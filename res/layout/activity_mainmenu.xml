@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_mainmenu" >
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/space_trader_logo"
+        android:contentDescription="@string/logo_desc"/>
+
+    <Button
+        android:id="@+id/btn_newgame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/img_logo"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_btn_main"
+        android:text="@string/bt_newgame"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/btn_loadgame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_newgame"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_btn_main"
+        android:text="@string/bt_resumegame"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/btn_debugmode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_loadgame"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_btn_main"
+        android:text="@string/bt_debugmode"
+        android:textSize="30dp" />
+
+</RelativeLayout>
