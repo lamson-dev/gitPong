@@ -9,13 +9,17 @@ public class Ball implements IBallModel {
 	private int height;
 
 	public Ball() {
-		setVx(5);
-		setVy(5);
-		setX(50);
-		setY(50);
+		vx = 5;
+		vy = 5;
+		x = 50;
+		y = 50;
 	}
 
-	public boolean hitPaddle(float padX, float padY) {
+	public boolean hitPaddle(float padX, float padY, float length) {
+
+		if (y + height >= padY)
+			if (x >= padX && x <= padX + length)
+				return true;
 		return false;
 	}
 
