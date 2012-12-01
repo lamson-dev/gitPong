@@ -72,8 +72,7 @@ public class PongActivity extends RootActivity implements IPongView,
 			float velocityY) {
 		if(e2.getRawY()< 1000){
 			Log.d(TAG, "flinging");
-			ball.setVx(ball.getVx()*(float)1.6);
-			ball.setVy(ball.getVy()*(float).7);
+			
 		}
 		return true;
 	}

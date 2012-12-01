@@ -36,17 +36,18 @@ public class PongPresenter {
 	// need to fix this, i don't like passing in these parameters
 	public void moveBall(int canvasWidth, int canvasHeight) {
 		if (mBall.hitEdge(canvasWidth)) {
-			//ballcheck();
+			// ballcheck();
 			mBall.setVx(mBall.getVx() * (float) (-1.0));
 
 		}
 
-		if (mBall.hitPaddle(mPaddle1) || mBall.hitPaddle(mPaddle2)) {
+		if ((mBall.getVy() < 0 && mBall.hitPaddle(mPaddle2))
+				|| (mBall.getVy() > 0 && mBall.hitPaddle(mPaddle1))) {
 			ballcheck();
 			mBall.setVy(mBall.getVy() * (float) (-1.1));
 			mBall.setVx(mBall.getVx() * (float) (1.04));
 		}
-		
+
 		if (mBall.hitEnd(canvasHeight)) {
 			mBall.reset();
 		}

@@ -17,8 +17,8 @@ public class Paddle implements IPaddleModel {
 
 	public Paddle() {
 		bitmapId = R.drawable.paddle;
-		vx = 25;
-		width = 100;
+		vx = 10;
+		width = 200;
 		height = 40;
 		// rect
 		rect = new Rect((int) (x - width / 2), (int) (y - height / 2),
