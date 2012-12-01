@@ -4,51 +4,64 @@ import android.graphics.Point;
 
 /**
  * Paddle
+ * 
  * @author DX
- *
+ * 
  */
-public class Paddle{
+public class Paddle implements IPaddleModel {
 	private Point position;
 	private int bitmapId;
 	private double width;
 	private double vx;
 	private int targx;
-	public Paddle(){
+
+	public Paddle() {
 		bitmapId = R.drawable.paddle;
 		position = new Point();
 		vx = 10;
-		//test
+		// test
 		position.set(50, 950);
+
 	}
+
 	/**
 	 * Getters and setters
+	 * 
 	 * @return
 	 */
-	public Point getPosition(){
+	public Point getPosition() {
 		return position;
 	}
-	public void setX(int newx){
+
+	public void setX(int newx) {
 		position.x = newx;
 	}
-	public void setTargx(int newx){
+
+	public void setTargx(int newx) {
 		targx = newx;
 	}
-	public void setPosition(int x, int y){
+
+	public void setPosition(int x, int y) {
 		position.set(x, y);
 	}
-	public double getWidth(){
+
+	public double getWidth() {
 		return width;
 	}
-	public double getSpeed(){
+
+	public double getSpeed() {
 		return vx;
 	}
-	public int getTargx(){
+
+	public int getTargx() {
 		return targx;
 	}
-	public int getBitmapId(){
+
+	public int getBitmapId() {
 		return bitmapId;
 	}
-	public void setWidth(double value){
+
+	public void setWidth(double value) {
 		width = value;
 	}
 }

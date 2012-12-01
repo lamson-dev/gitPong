@@ -11,12 +11,18 @@ import android.widget.FrameLayout;
  * @author Son Nguyen
  * 
  */
-public class DemoPongActivity extends RootActivity {
+public class DemoPongActivity extends RootActivity implements IPongView {
 
 	private static final String TAG = "Pong";
 	private boolean continueMusic;
 
-	private DemoView ball;
+	private BallView ballView;
+
+	protected PongPresenter mPresenter;
+
+	public DemoPongActivity() {
+		mPresenter = new PongPresenter(this);
+	}
 
 	/**
 	 * Method onCreate.
@@ -30,23 +36,16 @@ public class DemoPongActivity extends RootActivity {
 
 		final FrameLayout main = new FrameLayout(this);
 		main.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-
-		LayoutParams.MATCH_PARENT));
-		super.onCreate(savedInstanceState);
-		ball = new DemoView(this);
-		// ball.setOnTouchListener(this);
-		setContentView(main);
+				LayoutParams.MATCH_PARENT));
 		main.setBackgroundResource(R.drawable.background_b);
-		main.addView(ball);
 
+		ballView = new BallView(this);
+		main.addView(ballView);
 		setContentView(main);
-	}
-
-	/**
-	 * 
-	 */
-	public DemoPongActivity() {
-		// TODO Auto-generated constructor stub
+		
+		for (int i=0; i < 10000000; i++) {
+			mPresenter.moveBall(ballView);
+		}
 	}
 
 }

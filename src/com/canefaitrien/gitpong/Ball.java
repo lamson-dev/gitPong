@@ -1,74 +1,44 @@
 package com.canefaitrien.gitpong;
 
-import android.graphics.Point;
-
-public class Ball {
-	private Point position;
-	private int bitmapId;
+public class Ball implements IBallModel {
+	private float x;
+	private float y;
 	private float vx;
 	private float vy;
 	private int width;
 	private int height;
 
-	public Ball(int id) {
-		setBitmapId(id);
+	public Ball() {
 		setVx(5);
 		setVy(5);
-		setPosition(new Point(50, 50));
+		setX(50);
+		setY(50);
 	}
 
-	/**
-	 * checks if ball hit a paddle
-	 * 
-	 * @return
-	 */
-	public boolean hitPaddle() {
+	public boolean hitPaddle(float padX, float padY) {
 		return false;
 	}
 
-	/**
-	 * Checks is the ball is hitting a wall (edge of screen)
-	 * 
-	 * @return
-	 */
 	public boolean hitEdge(int canvasWidth) {
-		if (position.x <= 0 || position.x >= canvasWidth - width) {
+		if (x <= 0 || x >= canvasWidth - width) {
 			return true;
 		}
 		return false;
 	}
 
-	/**
-	 * checks if ball has passed a paddle
-	 * 
-	 * @return
-	 */
 	public boolean hitEnd(int canvasHeight) {
-		if (position.y <= 0 || position.y >= canvasHeight - height) {
+		if (y <= 0 || y >= canvasHeight - height) {
 			return true;
 		}
 		return false;
 	}
 
-	/**
-	 * getter setter
-	 * 
-	 * @return
-	 */
-	public Point getPosition() {
-		return position;
+	public void updateX() {
+		x += vx;
 	}
 
-	public void setPosition(Point newPos) {
-		this.position = newPos;
-	}
-
-	public int getBitmapId() {
-		return bitmapId;
-	}
-
-	public void setBitmapId(int bitmapId) {
-		this.bitmapId = bitmapId;
+	public void updateY() {
+		y += vy;
 	}
 
 	public float getVx() {
@@ -101,6 +71,22 @@ public class Ball {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public float getX() {
+		return x;
+	}
+
+	public void setX(float x) {
+		this.x = x;
+	}
+
+	public float getY() {
+		return y;
+	}
+
+	public void setY(float y) {
+		this.y = y;
 	}
 
 }
