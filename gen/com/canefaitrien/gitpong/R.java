@@ -21,6 +21,7 @@ public final class R {
         public static final int m5dp=0x7f050004;
     }
     public static final class drawable {
+<<<<<<< HEAD
         public static final int background_mainmenu=0x7f020000;
         public static final int btn_buy_pressed=0x7f020001;
         public static final int btn_buy_selected=0x7f020002;
@@ -55,6 +56,11 @@ public final class R {
         public static final int space_trader_logo=0x7f02001f;
         public static final int starfield_a=0x7f020020;
         public static final int starfield_b=0x7f020021;
+=======
+        public static final int ball_a=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int paddle=0x7f020002;
+>>>>>>> b63ff2fbf603ffa2c66840c6820c99227232564e
     }
     public static final class id {
         public static final int btn_debugmode=0x7f090003;
