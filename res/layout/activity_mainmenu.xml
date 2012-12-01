@@ -8,6 +8,9 @@
         android:id="@+id/img_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+        
         android:contentDescription="@string/logo_desc"
         android:src="@drawable/projectpong_logo" />
 
@@ -15,23 +18,17 @@
         android:id="@+id/btn_newgame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/img_logo"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/custom_btn_main"
-        android:text="@string/bt_newgame"
-        android:textSize="30dp" />
+        android:background="@drawable/start_button"/>
 
     <Button
         android:id="@+id/btn_loadgame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/btn_newgame"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_btn_main"
-        android:text="@string/bt_resumegame"
-        android:textSize="30dp" />
+        android:background="@drawable/load_button" />
 
     <Button
         android:id="@+id/btn_debugmode"

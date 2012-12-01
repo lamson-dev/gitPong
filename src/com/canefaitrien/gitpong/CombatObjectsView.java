@@ -25,7 +25,7 @@ public class CombatObjectsView extends View {
 				pad1.getBitmapId());
 		
 	}
-
+	
 	// draw
 	@SuppressLint("DrawAllocation") // too laxy to not redraw rectangle :(
 	protected void onDraw(Canvas canvas) {

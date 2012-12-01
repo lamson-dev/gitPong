@@ -1,5 +1,6 @@
 package com.canefaitrien.gitpong;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -40,7 +41,9 @@ public class CombatActivity extends RootActivity implements OnGestureListener {
 	@Override
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 			float velocityY) {
-		Log.d(TAG, "flinging");
+		if (e2.getRawY() < paddleMovementMaxY) {
+			Log.d(TAG, "fling");
+		}
 		return true;
 	}
 
