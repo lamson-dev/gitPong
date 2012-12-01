@@ -4,6 +4,8 @@
  */
 package com.canefaitrien.gitpong;
 
+import android.util.Log;
+
 /**
  * @author Son Nguyen
  * @version $Revision: 1.0 $
@@ -14,7 +16,7 @@ public class PongPresenter {
 	private IPongView mView;
 	// private IPongModel mPong;
 	private IBallModel mBall;
-	private IPaddleModel mPaddle;
+	private IPaddleModel mPaddle1;
 	private IPaddleModel mPaddle2;
 
 	private int canvasWidth;
@@ -24,7 +26,7 @@ public class PongPresenter {
 		mView = view;
 		// mPong = new Pong();
 		mBall = new Ball();
-		mPaddle = new Paddle();
+		mPaddle1 = new Paddle();
 		mPaddle2 = new Paddle();
 
 		mPaddle2.setX(700);
@@ -34,26 +36,42 @@ public class PongPresenter {
 	// need to fix this, i don't like passing in these parameters
 	public void moveBall(int canvasWidth, int canvasHeight) {
 		if (mBall.hitEdge(canvasWidth)) {
-			mBall.setVx(mBall.getVx() * (-1));
+			//ballcheck();
+			mBall.setVx(mBall.getVx() * (float) (-1.0));
+
 		}
 
-		if (mBall.hitPaddle(mPaddle.getX(), mPaddle.getY(), mPaddle.getWidth())) {
-			mBall.setVy(mBall.getVy() * (-1));
+		if (mBall.hitPaddle(mPaddle1) || mBall.hitPaddle(mPaddle2)) {
+			ballcheck();
+			mBall.setVy(mBall.getVy() * (float) (-1.1));
+			mBall.setVx(mBall.getVx() * (float) (1.04));
 		}
-
-		if (mBall.hitPaddle2(mPaddle2.getX(), mPaddle2.getY(),
-				mPaddle2.getWidth())) {
-			mBall.setVy(mBall.getVy() * (-1));
-		}
-
+		
 		if (mBall.hitEnd(canvasHeight)) {
-			mBall.setX(100);
-			mBall.setY(100);
-			mBall.setVx(5);
-			mBall.setVy(5);
+			mBall.reset();
 		}
 		mBall.updateX();
 		mBall.updateY();
+	}
+
+	// checks if the ball is moving too slow or too fast in one vector
+	public void ballcheck() {
+		if (Math.abs(mBall.getVx()) < 2) {
+			Log.d(TAG, "Ball x too slow");
+			mBall.setVx(mBall.getVx() * 2);
+		}
+		if (Math.abs(mBall.getVy()) < 2.5) {
+			Log.d(TAG, "Ball y too slow");
+			mBall.setVy(mBall.getVy() * 2);
+		}
+		if (Math.abs(mBall.getVx()) > 12) {
+			Log.d(TAG, "Ball x too fast");
+			mBall.setVx(mBall.getVx() < 0 ? -12 : 12);
+		}
+		if (Math.abs(mBall.getVy()) > 12) {
+			Log.d(TAG, "Ball y too fast");
+			mBall.setVy(mBall.getVy() < 0 ? -12 : 12);
+		}
 	}
 
 	public IBallModel getBall() {
@@ -61,7 +79,7 @@ public class PongPresenter {
 	}
 
 	public IPaddleModel getPaddle() {
-		return mPaddle;
+		return mPaddle1;
 	}
 
 	public IPaddleModel getPaddle2() {

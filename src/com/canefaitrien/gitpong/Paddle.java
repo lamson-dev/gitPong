@@ -1,5 +1,7 @@
 package com.canefaitrien.gitpong;
 
+import android.graphics.Rect;
+
 /**
  * Paddle
  * 
@@ -11,16 +13,21 @@ public class Paddle implements IPaddleModel {
 	private int bitmapId;
 	private int width, height; // width
 	private float vx; // x velocity
+	private Rect rect;
 
 	public Paddle() {
 		bitmapId = R.drawable.paddle;
-		vx = 10;
-		width = 210;
-		height = 30;
+		vx = 25;
+		width = 100;
+		height = 40;
+		// rect
+		rect = new Rect((int) (x - width / 2), (int) (y - height / 2),
+				(int) (x + width / 2), (int) (y + height / 2));
 		// test position
 		x = 700;
 		y = 900;
 		targetx = x;
+		//
 	}
 
 	/**
@@ -78,6 +85,9 @@ public class Paddle implements IPaddleModel {
 		return vx;
 	}
 
+	public Rect getRect(){
+		return rect;
+	}
 	public int getBitmapId() {
 		return bitmapId;
 	}

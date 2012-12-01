@@ -6,15 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.util.Log;
 import android.view.View;
 
+@SuppressLint("ViewConstructor")
 public class PaddleView extends View {
 	private final String TAG = "Combat";
 	private Bitmap bmPaddle1;
-	private Rect pad1rect;
-	private Rect pad2rect;
 	private final Paint paint = new Paint();// normal paint
 
 	private PongPresenter mPresenter;
@@ -41,17 +39,11 @@ public class PaddleView extends View {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 
-		// draw paddle's new positions
-		pad1rect = new Rect((int) (pad1.getX() - pad1.getWidth() / 2),
-				(int) (pad1.getY() - pad1.getHeight()),
-				(int) (pad1.getX() + pad1.getWidth() / 2),
-				(int) (pad1.getY() + pad1.getHeight()));
-
-		pad2rect = new Rect((int) (pad2.getX() - pad2.getWidth() / 2),
-				(int) (pad2.getY() - pad2.getHeight()),
-				(int) (pad2.getX() + pad2.getWidth() / 2),
-				(int) (pad2.getY() + pad2.getHeight()));
-
+		pad1.getRect().set((int) (pad1.getX() - pad1.getWidth() / 2), (int) (pad1.getY() - pad1.getHeight() / 2),
+				(int) (pad1.getX() + pad1.getWidth() / 2), (int) (pad1.getY() + pad1.getHeight() / 2));
+		pad2.getRect().set((int) (pad2.getX() - pad2.getWidth() / 2), (int) (pad2.getY() - pad2.getHeight() / 2),
+				(int) (pad2.getX() + pad2.getWidth() / 2), (int) (pad2.getY() + pad2.getHeight() / 2));
+		
 		float pad1x = pad1.getX();
 		float pad1targetx = pad1.getTargetx();
 
@@ -64,14 +56,14 @@ public class PaddleView extends View {
 		float pad2x = pad2.getX();
 		float pad2targetx = mPresenter.getBall().getX();
 
-		if (pad2x < pad2targetx - 10) {
+		if (pad2x < pad2targetx - 10) { //checks distance from target
 			pad2.setX(pad2x + pad2.getSpeed());
-		} else if (pad2x > pad2targetx + 10) {
+		} else if (pad2x > pad2targetx + 10) { 
 			pad2.setX(pad2x - pad2.getSpeed());
 		}
 
-		canvas.drawBitmap(bmPaddle1, null, pad1rect, paint);
-		canvas.drawBitmap(bmPaddle1, null, pad2rect, paint);
+		canvas.drawBitmap(bmPaddle1, null, pad1.getRect(), paint);
+		canvas.drawBitmap(bmPaddle1, null, pad2.getRect(), paint);
 		// do it again
 		invalidate();
 	}

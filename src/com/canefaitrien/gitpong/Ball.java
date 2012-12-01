@@ -1,5 +1,6 @@
 package com.canefaitrien.gitpong;
 
+import android.graphics.Rect;
 import android.util.Log;
 
 public class Ball implements IBallModel {
@@ -11,35 +12,25 @@ public class Ball implements IBallModel {
 	private float vy;
 	private int width;
 	private int height;
+	private float defx, defy, defvx, defvy;
+	private Rect rect;
 
 	public Ball() {
-		vx = 5;
-		vy = 5;
-		x = 50;
-		y = 50;
+		defx = 400;
+		defy = 500;
+		defvx = (float) 5.5;
+		defvy = 5;
+		rect = new Rect((int) (x - width / 2), (int) (y - height / 2),
+				(int) (x + width / 2), (int) (y + height / 2));
+		reset();
 	}
 
-	public boolean hitPaddle(float padX, float padY, float padWidth) {
-		if ((y + height) >= padY) {
-			Log.d(TAG, "y is greater than padY");
-			Log.d(TAG, "ball hit paddle padX=" + padX + " padY=" + padY + " "
-					+ padWidth);
-			if (x >= (padX - padWidth / 2) && x <= (padX + padWidth / 2)) {
-				return true;
-			}
+	public boolean hitPaddle(IPaddleModel pad) {
+		if(pad.getRect().intersect(rect)){
+			return true;
 		}
 		return false;
 	}
-
-	public boolean hitPaddle2(float padX, float padY, float padWidth) {
-		if ((y) <= padY) {
-			if (x >= (padX - padWidth / 2) && x <= (padX + padWidth / 2)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	public boolean hitEdge(int canvasWidth) {
 
 		if (x <= 0 || x >= canvasWidth - width / 2) {
@@ -58,6 +49,17 @@ public class Ball implements IBallModel {
 		return false;
 	}
 
+	//
+	public void reset(){
+		Log.d(TAG, "reseting ball");
+		x = defx;
+		y = defy;
+		vx = defvx;
+		vy = defvy;
+	}
+	public Rect getRect(){
+		return rect;
+	}
 	public void updateX() {
 		x += vx;
 	}

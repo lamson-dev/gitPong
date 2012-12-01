@@ -1,5 +1,7 @@
 package com.canefaitrien.gitpong;
 
+import android.graphics.Rect;
+
 public interface IPaddleModel {
 	public float getX();
 
@@ -26,4 +28,6 @@ public interface IPaddleModel {
 	public float getSpeed();
 
 	public int getBitmapId();
+	
+	public Rect getRect();
 }

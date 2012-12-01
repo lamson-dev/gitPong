@@ -3,15 +3,17 @@
  */
 package com.canefaitrien.gitpong;
 
+import android.graphics.Rect;
+
 /**
  * @author Son Nguyen
  * 
  */
 public interface IBallModel {
+	
+	public Rect getRect();
 
-	public boolean hitPaddle(float padX, float padY, float padWidth);
-
-	public boolean hitPaddle2(float padX, float padY, float padWidth);
+	public boolean hitPaddle(IPaddleModel pad);
 
 	public boolean hitEdge(int canvasWidth);
 
@@ -44,5 +46,7 @@ public interface IBallModel {
 	public float getY();
 
 	public void setY(float y);
+	
+	public void reset();
 
 }

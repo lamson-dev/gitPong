@@ -53,7 +53,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DemoPongActivity"
+            android:name="com.canefaitrien.gitpong.PongActivity"
             android:exported="false"
             android:label="@string/title_activity_pong" >
             <intent-filter>

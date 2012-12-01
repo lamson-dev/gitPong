@@ -41,13 +41,13 @@ public class MainMenuActivity extends RootActivity implements OnClickListener {
 		Intent intent = null;
 		switch (v.getId()) {
 		case R.id.btn_newgame:
-			intent = new Intent(MainMenuActivity.this, DemoPongActivity.class);
+			intent = new Intent(MainMenuActivity.this, PongActivity.class);
 			break;
 		case R.id.btn_loadgame:
 			intent = new Intent(MainMenuActivity.this, PongActivity.class);
 			break;
 		case R.id.btn_debugmode:
-			intent = new Intent(MainMenuActivity.this, DemoPongActivity.class);
+			intent = new Intent(MainMenuActivity.this, PongActivity.class);
 			break;
 		default:
 			break;
