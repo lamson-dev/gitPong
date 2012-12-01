@@ -1,6 +1,5 @@
 package com.canefaitrien.gitpong;
 
-import android.graphics.Point;
 
 /**
  * Paddle
@@ -8,47 +7,64 @@ import android.graphics.Point;
  *
  */
 public class Paddle{
-	private Point position;
+	private float x, y, targetx;
 	private int bitmapId;
-	private double width;
-	private double vx;
-	private int targx;
+	private int width,height; //width
+	private float vx; //x velocity
 	public Paddle(){
 		bitmapId = R.drawable.paddle;
-		position = new Point();
 		vx = 10;
-		//test
-		position.set(50, 950);
+		width = 210;
+		height = 30;
+		//test position
+		x = 700;
+		y = 1050;
+		targetx = x;
 	}
 	/**
 	 * Getters and setters
 	 * @return
 	 */
-	public Point getPosition(){
-		return position;
+	public float getX(){
+		return x;
 	}
-	public void setX(int newx){
-		position.x = newx;
+	public float getY(){
+		return y;
 	}
-	public void setTargx(int newx){
-		targx = newx;
+	public void setX(float newx){
+		x = newx;
 	}
-	public void setPosition(int x, int y){
-		position.set(x, y);
+	public void setY(float newy){
+		y = newy;
 	}
-	public double getWidth(){
+	public float getTargetx(){
+		return targetx;
+	}
+	public void setTargetx(float newx){
+		targetx = newx;
+	}
+	//target y goes here
+	public void setPosition(int newx, int newy){
+		x = newx;
+		y = newy;
+	}
+	public int getWidth(){
 		return width;
 	}
-	public double getSpeed(){
-		return vx;
+	public void setWidth(int value){
+		width = value;
 	}
-	public int getTargx(){
-		return targx;
+	public int getHeight(){
+		return height;
+	}
+	public void setHeight(int value){
+		height = value;
+	}
+	public float getSpeed(){
+		return vx;
 	}
 	public int getBitmapId(){
 		return bitmapId;
 	}
-	public void setWidth(double value){
-		width = value;
-	}
+	
 }
