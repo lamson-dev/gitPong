@@ -35,14 +35,16 @@ public class PongActivity extends RootActivity implements IPongView,
 	private GestureDetector gestures;
 	private Button skill1;
 	private Button skill2;
-	private ImageView animPad;
-
 	private int paddleMovementMaxY;
 	private IBallModel ball;
 	private IPaddleModel pad1, pad2;
 
 	AnimationDrawable animation;
+	AnimationDrawable animationButton;
 	Drawable[] animFrames;
+
+	private ImageView animPad;
+	private ImageView animBtn;
 
 	protected PongPresenter mPresenter;
 
@@ -51,6 +53,7 @@ public class PongActivity extends RootActivity implements IPongView,
 		ball = mPresenter.getBall();
 		pad1 = mPresenter.getPaddle();
 		pad2 = mPresenter.getPaddle2();
+		continueMusic = true;
 	}
 
 	/**
@@ -87,6 +90,7 @@ public class PongActivity extends RootActivity implements IPongView,
 				R.drawable.pound_anim1_small };
 
 		animPad = (ImageView) findViewById(R.id.img);
+		animBtn = (ImageView) findViewById(R.id.img_btn);
 		animFrames = resizeAnimationFrames(frames);
 	}
 
@@ -105,18 +109,44 @@ public class PongActivity extends RootActivity implements IPongView,
 			}, 300);
 			startAnimation();
 			mPresenter.triggerSkillPound();
-
 			break;
 		case R.id.skill_stretch:
+			skill2.setVisibility(View.INVISIBLE);
+			animBtn.setVisibility(View.VISIBLE);
+			skill2.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					skill2.setVisibility(View.VISIBLE);
+					animBtn.setVisibility(View.GONE);
+				}
+			}, 3000);
 			mPresenter.triggerStraightBall();
+			blinkButton(skill2, R.drawable.skill_stretch,
+					R.drawable.skill_stretch_pressed);
+			// Handler myHandler = new Handler();
+			// myHandler.postDelayed(mMyRunnable, 1000);
+			// animation.stop();
 			break;
 		}
 
 	}
 
+	private Runnable mMyRunnable = new Runnable() {
+		@Override
+		public void run() {
+			// Change state here
+		}
+	};
+
 	class Starter implements Runnable {
 		public void run() {
 			animation.start();
+		}
+	}
+
+	class StarterButton implements Runnable {
+		public void run() {
+			animationButton.start();
 		}
 	}
 
@@ -131,6 +161,20 @@ public class PongActivity extends RootActivity implements IPongView,
 							pad1.getWidth(), true));
 		}
 		return drawableFrames;
+	}
+
+	private void blinkButton(Button skill, int id1, int id2) {
+		int duration = 100;
+
+		animationButton = new AnimationDrawable();
+		animationButton.addFrame(getResources().getDrawable(id1), duration);
+		animationButton.addFrame(getResources().getDrawable(id2), duration);
+		animationButton.setOneShot(false);
+
+		animBtn.setX(skill.getX());
+		animBtn.setY(skill.getY());
+		animBtn.setImageDrawable(animationButton);
+		animBtn.post(new StarterButton());
 	}
 
 	private void startAnimation() {
@@ -160,10 +204,10 @@ public class PongActivity extends RootActivity implements IPongView,
 	@Override
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 			float velocityY) {
-		
+
 		if (velocityX < 50)
 			return false;
-		
+
 		pad1View.setVisibility(View.INVISIBLE);
 		animPad.setVisibility(View.VISIBLE);
 		pad1View.postDelayed(new Runnable() {
@@ -175,6 +219,18 @@ public class PongActivity extends RootActivity implements IPongView,
 		}, 300);
 		startAnimation();
 		mPresenter.triggerSkillPound();
+
+		skill1.setVisibility(View.INVISIBLE);
+		animBtn.setVisibility(View.VISIBLE);
+		skill1.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				skill1.setVisibility(View.VISIBLE);
+				animBtn.setVisibility(View.GONE);
+			}
+		}, 2000);
+		blinkButton(skill1, R.drawable.skill_pound,
+				R.drawable.skill_pound_pressed);
 		// if (e2.getRawY() < 1000) {
 		// Log.d(TAG, "flinging");
 		// ball.setVx(ball.getVx() * (float) 1.6);
@@ -222,6 +278,70 @@ public class PongActivity extends RootActivity implements IPongView,
 	public boolean onSingleTapUp(MotionEvent e) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	/**
+	 * make sure music keeps playing without disruption when user press Back
+	 */
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		continueMusic = true;
+	}
+
+	/**
+	 * pause music when activity is paused
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		Log.d(TAG, "onPause called.");
+		if (!continueMusic) {
+			MusicManager.pause();
+		}
+	}
+
+	/**
+	 * resume/start music without disruption
+	 */
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.d(TAG, "onResume called.");
+		continueMusic = true;
+		MusicManager.start(this, MusicManager.MUSIC_MENU);
+
+	}
+
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	/**
+	 * other fundamental android methods
+	 */
+	@Override
+	protected void onStart() {
+		super.onStart();
+		Log.d(TAG, "onStart called.");
+	}
+
+	/**
+	 * Method onStop.
+	 */
+	@Override
+	protected void onStop() {
+		super.onStop();
+		Log.d(TAG, "onStop called.");
+		finish();
+	}
+
+	/**
+	 * Method onRestart.
+	 */
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		Log.d(TAG, "onRestart called.");
 	}
 
 }

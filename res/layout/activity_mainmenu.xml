@@ -34,9 +34,9 @@
         android:id="@+id/btn_debugmode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/btn_loadgame"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/custom_btn_main"
         android:text="@string/bt_debugmode"
         android:textSize="30dp" />

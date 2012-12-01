@@ -57,8 +57,9 @@ public final class R {
         public static final int btn_newgame=0x7f090003;
         public static final int frame_pong=0x7f090006;
         public static final int img=0x7f090000;
+        public static final int img_btn=0x7f090009;
         public static final int img_logo=0x7f090002;
-        public static final int menu_settings=0x7f090009;
+        public static final int menu_settings=0x7f09000a;
         public static final int skill_pound=0x7f090007;
         public static final int skill_stretch=0x7f090008;
     }
