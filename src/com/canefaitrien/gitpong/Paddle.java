@@ -9,11 +9,16 @@ import android.graphics.Point;
  */
 public class Paddle{
 	private Point position;
-	private int paddleIcon;
+	private int bitmapId;
 	private double width;
-	private double speed;
+	private double vx;
+	private int targx;
 	public Paddle(){
-		paddleIcon = R.drawable.paddle;
+		bitmapId = R.drawable.paddle;
+		position = new Point();
+		vx = 10;
+		//test
+		position.set(50, 950);
 	}
 	/**
 	 * Getters and setters
@@ -22,11 +27,26 @@ public class Paddle{
 	public Point getPosition(){
 		return position;
 	}
+	public void setX(int newx){
+		position.x = newx;
+	}
+	public void setTargx(int newx){
+		targx = newx;
+	}
+	public void setPosition(int x, int y){
+		position.set(x, y);
+	}
 	public double getWidth(){
 		return width;
 	}
-	public int getIcon(){
-		return paddleIcon;
+	public double getSpeed(){
+		return vx;
+	}
+	public int getTargx(){
+		return targx;
+	}
+	public int getBitmapId(){
+		return bitmapId;
 	}
 	public void setWidth(double value){
 		width = value;

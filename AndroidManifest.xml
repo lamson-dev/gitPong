@@ -59,6 +59,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+         <activity
+            android:name=".CombatActivity"
+            android:exported="false"
+            android:label="@string/title_activity_pong" >
+            <intent-filter>
+                <action android:name="com.cainefaitrient.gitpong.COMBAT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
