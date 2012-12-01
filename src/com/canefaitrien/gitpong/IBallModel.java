@@ -9,7 +9,9 @@ package com.canefaitrien.gitpong;
  */
 public interface IBallModel {
 
-	public boolean hitPaddle(float padX, float padY, float length);
+	public boolean hitPaddle(float padX, float padY, float padWidth);
+
+	public boolean hitPaddle2(float padX, float padY, float padWidth);
 
 	public boolean hitEdge(int canvasWidth);
 

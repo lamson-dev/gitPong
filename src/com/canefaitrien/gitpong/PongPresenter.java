@@ -15,6 +15,7 @@ public class PongPresenter {
 	// private IPongModel mPong;
 	private IBallModel mBall;
 	private IPaddleModel mPaddle;
+	private IPaddleModel mPaddle2;
 
 	private int canvasWidth;
 	private int canvasHeight;
@@ -24,6 +25,10 @@ public class PongPresenter {
 		// mPong = new Pong();
 		mBall = new Ball();
 		mPaddle = new Paddle();
+		mPaddle2 = new Paddle();
+
+		mPaddle2.setX(700);
+		mPaddle2.setY(100);
 	}
 
 	// need to fix this, i don't like passing in these parameters
@@ -36,8 +41,16 @@ public class PongPresenter {
 			mBall.setVy(mBall.getVy() * (-1));
 		}
 
-		if (mBall.hitEnd(canvasHeight)) {
+		if (mBall.hitPaddle2(mPaddle2.getX(), mPaddle2.getY(),
+				mPaddle2.getWidth())) {
 			mBall.setVy(mBall.getVy() * (-1));
+		}
+
+		if (mBall.hitEnd(canvasHeight)) {
+			mBall.setX(100);
+			mBall.setY(100);
+			mBall.setVx(5);
+			mBall.setVy(5);
 		}
 		mBall.updateX();
 		mBall.updateY();
@@ -49,6 +62,10 @@ public class PongPresenter {
 
 	public IPaddleModel getPaddle() {
 		return mPaddle;
+	}
+
+	public IPaddleModel getPaddle2() {
+		return mPaddle2;
 	}
 
 	public int getCanvasWidth() {

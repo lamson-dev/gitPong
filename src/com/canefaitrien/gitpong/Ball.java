@@ -22,10 +22,18 @@ public class Ball implements IBallModel {
 	public boolean hitPaddle(float padX, float padY, float padWidth) {
 		if ((y + height) >= padY) {
 			Log.d(TAG, "y is greater than padY");
-			// if (x >= (padX + padWidth / 2) && x <= (padX + padWidth / 2)) {
-			if (x >= 0 && x <= padX) {
-				Log.d(TAG, "ball hit paddle padX=" + padX + " padY=" + padY
-						+ " " + padWidth);
+			Log.d(TAG, "ball hit paddle padX=" + padX + " padY=" + padY + " "
+					+ padWidth);
+			if (x >= (padX - padWidth / 2) && x <= (padX + padWidth / 2)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hitPaddle2(float padX, float padY, float padWidth) {
+		if ((y) <= padY) {
+			if (x >= (padX - padWidth / 2) && x <= (padX + padWidth / 2)) {
 				return true;
 			}
 		}
@@ -34,7 +42,7 @@ public class Ball implements IBallModel {
 
 	public boolean hitEdge(int canvasWidth) {
 
-		if (x <= 0 || x >= canvasWidth - width) {
+		if (x <= 0 || x >= canvasWidth - width / 2) {
 			Log.d(TAG, "ball hit edge");
 			return true;
 		}
@@ -42,9 +50,9 @@ public class Ball implements IBallModel {
 	}
 
 	public boolean hitEnd(int canvasHeight) {
-
-		if (y <= 0 || y >= canvasHeight - height) {
-			Log.d(TAG, "ball hit end");
+		if (y <= 0) {
+			return true;
+		} else if (y >= canvasHeight - height / 2) {
 			return true;
 		}
 		return false;

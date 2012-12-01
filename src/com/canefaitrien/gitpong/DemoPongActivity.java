@@ -22,7 +22,7 @@ public class DemoPongActivity extends RootActivity implements IPongView,
 	private boolean continueMusic;
 
 	private BallView ballView;
-	private CombatObjectsView objectsView;
+	private PaddleView objectsView;
 	private GestureDetector gestures;
 	private int paddleMovementMaxY;
 
@@ -47,9 +47,9 @@ public class DemoPongActivity extends RootActivity implements IPongView,
 				LayoutParams.MATCH_PARENT));
 		main.setBackgroundResource(R.drawable.background_b);
 
-		objectsView = new CombatObjectsView(this);
+		objectsView = new PaddleView(this, mPresenter);
 		gestures = new GestureDetector(this);
-		paddleMovementMaxY = (int) (objectsView.getPad1().getY() - 100);
+		paddleMovementMaxY = (int) (mPresenter.getPaddle().getY() - 100);
 		main.addView(objectsView);
 
 		ballView = new BallView(this, mPresenter);
@@ -74,7 +74,7 @@ public class DemoPongActivity extends RootActivity implements IPongView,
 		Log.d(TAG,
 				"Found a touch!" + (int) e.getRawX() + " " + (int) e.getRawY());
 		if (e.getRawY() > paddleMovementMaxY) {
-			objectsView.getPad1().setTargetx((int) e.getRawX());
+			mPresenter.getPaddle().setTargetx((int) e.getRawX());
 		}
 		return true;
 	}
@@ -90,7 +90,7 @@ public class DemoPongActivity extends RootActivity implements IPongView,
 			float distanceY) {
 		// Log.d(TAG, "scroll" + (int) e2.getRawX() + " " + (int) e2.getRawY());
 		if (e2.getRawY() > paddleMovementMaxY) {
-			objectsView.getPad1().setTargetx((int) e2.getRawX());
+			mPresenter.getPaddle().setTargetx((int) e2.getRawX());
 		} else {
 			// if(e1.getRawY()>objectsView.getBa)
 		}
