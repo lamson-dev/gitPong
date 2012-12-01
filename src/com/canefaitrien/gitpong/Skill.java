@@ -4,16 +4,11 @@ public class Skill {
 	private String type; //offense, defense, utility, passive
 	private String name;
 	private int cooldownMax,cooldown;
-	/**
-	 * 
-	 */
+	// constructor
 	public Skill(){
 		
 	}
-	/**
-	 * getters setters
-	 * @return
-	 */
+	//getters setters
 	public int getCooldownMax(){
 		return cooldownMax;
 	}
