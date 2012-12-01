@@ -52,13 +52,9 @@ public class DemoPongActivity extends RootActivity implements IPongView,
 		paddleMovementMaxY = (int) (objectsView.getPad1().getY() - 100);
 		main.addView(objectsView);
 
-		ballView = new BallView(this);
+		ballView = new BallView(this, mPresenter);
 		main.addView(ballView);
 		setContentView(main);
-
-		for (int i = 0; i < 10000000; i++) {
-			mPresenter.moveBall(ballView);
-		}
 	}
 
 	@Override

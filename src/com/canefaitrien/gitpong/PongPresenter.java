@@ -16,6 +16,9 @@ public class PongPresenter {
 	private IBallModel mBall;
 	private IPaddleModel mPaddle;
 
+	private int canvasWidth;
+	private int canvasHeight;
+
 	public PongPresenter(IPongView view) {
 		mView = view;
 		// mPong = new Pong();
@@ -23,31 +26,41 @@ public class PongPresenter {
 		mPaddle = new Paddle();
 	}
 
-	public void moveBall(BallView ballView) {
-		// if (mPong.getBall().hitEdge(200)) {
-		// mPong.getBall().setVx(mPong.getBall().getVx() * (-1));
-		// } else if (mPong.getBall().hitEnd(200)) {
-		// mPong.getBall().setVy(mPong.getBall().getVy() * (-1));
-		// }
-		//
-		// mPong.getBall().updateX();
-		// mPong.getBall().updateY();
-		//
-		// ballView.setX(mPong.getBall().getX());
-		// ballView.setY(mPong.getBall().getY());
-
-		ballView.setX(mBall.getX());
-		ballView.setY(mBall.getY());
-
-		if (mBall.hitEdge(200)) {
+	// need to fix this, i don't like passing in these parameters
+	public void moveBall(int canvasWidth, int canvasHeight) {
+		if (mBall.hitEdge(canvasWidth)) {
 			mBall.setVx(mBall.getVx() * (-1));
-		} else if (mBall.hitEnd(200)) {
+		} else if (mBall.hitPaddle(mPaddle.getX(), mPaddle.getY(),
+				mPaddle.getWidth())) {
+			mBall.setVy(mBall.getVy() * (-1));
+		} else if (mBall.hitEnd(canvasHeight)) {
 			mBall.setVy(mBall.getVy() * (-1));
 		}
 		mBall.updateX();
 		mBall.updateY();
+	}
 
-		ballView.invalidate();
+	public IBallModel getBall() {
+		return mBall;
+	}
 
+	public IPaddleModel getPaddle() {
+		return mPaddle;
+	}
+
+	public int getCanvasWidth() {
+		return canvasWidth;
+	}
+
+	public void setCanvasWidth(int canvasWidth) {
+		this.canvasWidth = canvasWidth;
+	}
+
+	public int getCanvasHeight() {
+		return canvasHeight;
+	}
+
+	public void setCanvasHeight(int canvasHeight) {
+		this.canvasHeight = canvasHeight;
 	}
 }
