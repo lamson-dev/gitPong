@@ -64,6 +64,9 @@ public class PaddleView extends View {
 
 		canvas.drawBitmap(bmPaddle1, null, pad1.getRect(), paint);
 		canvas.drawBitmap(bmPaddle1, null, pad2.getRect(), paint);
+		//draw a skill
+		Bitmap poundSkill = BitmapFactory.decodeResource(getResources(), R.drawable.pound_skill);
+		canvas.drawBitmap(poundSkill, 700, 900, paint);
 		// do it again
 		invalidate();
 	}

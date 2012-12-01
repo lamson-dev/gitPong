@@ -38,6 +38,7 @@ public final class R {
         public static final int pound_skill=0x7f02000e;
         public static final int projectpong_logo=0x7f02000f;
         public static final int start_button=0x7f020010;
+        public static final int stretch_skill=0x7f020011;
     }
     public static final class id {
         public static final int btn_debugmode=0x7f090003;

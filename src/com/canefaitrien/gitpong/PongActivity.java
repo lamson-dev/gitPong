@@ -57,6 +57,7 @@ public class PongActivity extends RootActivity implements IPongView,
 		paddleMovementMaxY = (int) (mPresenter.getPaddle().getY() - 100);
 		main.addView(objectsView);
 
+		
 		ballView = new BallView(this, mPresenter);
 		main.addView(ballView);
 		setContentView(main);
@@ -81,6 +82,7 @@ public class PongActivity extends RootActivity implements IPongView,
 	public boolean onDown(MotionEvent e) {
 		Log.d(TAG,
 				"Found a touch!" + (int) e.getRawX() + " " + (int) e.getRawY());
+	
 		if (e.getRawY() > paddleMovementMaxY) {
 			mPresenter.getPaddle().setTargetx((int) e.getRawX());
 		}
