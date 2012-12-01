@@ -8,9 +8,11 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="16" />
 
-    <instrumentation
+    <!--
+         <instrumentation
         android:name="android.test.InstrumentationTestRunner"
         android:targetPackage="com.canefaitrien.gitpong" />
+    -->
 
     <application
         android:name=".GitPong"
@@ -18,7 +20,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppBaseThemeNoActionBar" >
-        <uses-library android:name="android.test.runner" />
+
+        <!-- <uses-library android:name="android.test.runner" /> -->
 
         <activity
             android:name=".LauncherActivity"
