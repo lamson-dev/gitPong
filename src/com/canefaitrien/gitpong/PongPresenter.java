@@ -75,6 +75,27 @@ public class PongPresenter {
 		}
 	}
 
+	public void triggerSkillPound() {
+
+		if (mBall.inPoundRange(mPaddle1)) {
+			if (mBall.getVx() < 0)
+				mBall.setVx(mBall.getVx() * (float) -2.5);
+			else if (mBall.getVx() > 0)
+				mBall.setVx(mBall.getVx() * (float) 2.5);
+			else
+				mBall.setVx(5 * (float) 2.5);
+			mBall.setVy(mBall.getVy() * (float) -1.1);
+		}
+
+	}
+
+	public void triggerStraightBall() {
+		if (mBall.getY() >= 600 && mBall.getVy() > 0) {
+			mBall.setVy(mBall.getVy() * (float) -1.5);
+			mBall.setVx(0);
+		}
+	}
+
 	public IBallModel getBall() {
 		return mBall;
 	}

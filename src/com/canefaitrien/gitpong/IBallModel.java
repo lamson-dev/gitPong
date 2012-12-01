@@ -18,6 +18,8 @@ public interface IBallModel {
 	public boolean hitEdge(int canvasWidth);
 
 	public boolean hitEnd(int canvasHeight);
+	
+	public boolean inPoundRange(IPaddleModel pad);
 
 	public void updateX();
 

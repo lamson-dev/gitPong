@@ -19,18 +19,19 @@ public class Ball implements IBallModel {
 		defx = 400;
 		defy = 500;
 		defvx = (float) 5.5;
-		defvy = 5;
+		defvy = 6;
 		rect = new Rect((int) (x - width / 2), (int) (y - height / 2),
 				(int) (x + width / 2), (int) (y + height / 2));
 		reset();
 	}
 
 	public boolean hitPaddle(IPaddleModel pad) {
-		if(pad.getRect().intersect(rect)){
+		if (pad.getRect().intersect(rect)) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean hitEdge(int canvasWidth) {
 
 		if (x <= 0 || x >= canvasWidth - width / 2) {
@@ -49,17 +50,27 @@ public class Ball implements IBallModel {
 		return false;
 	}
 
+	public boolean inPoundRange(IPaddleModel pad) {
+		if (y >= pad.getY() - pad.getWidth() && y <= pad.getY() - height/2)
+			if (x >= pad.getX() - pad.getWidth() / 2
+					&& x <= pad.getX() + pad.getWidth() / 2)
+				return true;
+		return false;
+	}
+	
 	//
-	public void reset(){
+	public void reset() {
 		Log.d(TAG, "reseting ball");
 		x = defx;
 		y = defy;
 		vx = defvx;
 		vy = defvy;
 	}
-	public Rect getRect(){
+
+	public Rect getRect() {
 		return rect;
 	}
+
 	public void updateX() {
 		x += vx;
 	}

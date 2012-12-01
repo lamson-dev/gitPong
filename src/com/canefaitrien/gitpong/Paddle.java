@@ -25,9 +25,8 @@ public class Paddle implements IPaddleModel {
 				(int) (x + width / 2), (int) (y + height / 2));
 		// test position
 		x = 700;
-		y = 900;
+		y = 1000;
 		targetx = x;
-		//
 	}
 
 	/**

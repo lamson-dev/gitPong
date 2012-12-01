@@ -21,7 +21,6 @@ public class BallView extends View {
 	private IBallModel ball;
 	private final Paint paint = new Paint();// normal paint
 
-
 	public BallView(Context context, PongPresenter presenter) {
 		super(context);
 		bmBall = BitmapFactory
@@ -36,13 +35,18 @@ public class BallView extends View {
 
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		ball.getRect().set((int) (ball.getX() - ball.getWidth() / 2), (int) (ball.getY() - ball.getHeight() / 2),
-				(int) (ball.getX() + ball.getWidth() / 2), (int) (ball.getY() + ball.getHeight() / 2));
+		ball.getRect().set((int) (ball.getX() - ball.getWidth() / 2),
+				(int) (ball.getY() - ball.getHeight() / 2),
+				(int) (ball.getX() + ball.getWidth() / 2),
+				(int) (ball.getY() + ball.getHeight() / 2));
 		canvas.drawBitmap(bmBall, null, ball.getRect(), paint);
 		mPresenter.moveBall(canvas.getWidth(), canvas.getHeight());
 		// mPresenter.moveBall();
 		x = mPresenter.getBall().getX();
 		y = mPresenter.getBall().getY();
+
+		// simple AI for paddle2 to follow ball
+		mPresenter.getPaddle2().setX(x);
 
 		// Log.d(TAG, "x=" + x + " y=" + y);
 		invalidate();
