@@ -47,8 +47,7 @@ public final class R {
         public static final int skill_pound_pressed=0x7f020017;
         public static final int skill_stretch=0x7f020018;
         public static final int skill_stretch_pressed=0x7f020019;
-        public static final int space_trader_logo=0x7f02001a;
-        public static final int start_button=0x7f02001b;
+        public static final int start_button=0x7f02001a;
     }
     public static final class id {
         public static final int btnStart=0x7f090001;
